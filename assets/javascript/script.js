@@ -92,7 +92,7 @@ fetch(usaUrl)
         return response.json();
     }).then(function (usaData) {
         console.log(usaData);
-        displayUSA(usaData);
+        // displayUSA(usaData);
     })
 
 
@@ -100,7 +100,13 @@ fetch(gifUrl)
     .then(function (response) {
         return response.json();
     }).then(function (gifData) {
-        console.log(gifData);
+        // displayCats(gifData);
     })
 
+// var displayCats = function(cats) {
+//     console.log(cats);
+
+//     var catsGif = cats.data[0].url;
+//     console.log(catsGif);
+// }
 // searchBtn.addEventListener('click', searchBtnHandler);
