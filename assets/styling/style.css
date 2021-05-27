@@ -12,3 +12,17 @@ padding: 13px;
 .button:focus {
 background-color: white;
 }
+
+.card-panel {
+box-sizing: border-box;
+width: 400px;
+}
+
+.row {
+    width: 1000px;
+}
+
+#gallery {
+
+    background-color:  rgb(255, 115, 0);
+}
