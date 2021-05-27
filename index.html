@@ -16,11 +16,57 @@
 
 <body>
   <div class="navbar-fixed">
-    <nav class="red"></nav>
+    <nav class="red">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Covid and Cats</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#search">Search</a>
+            </li>
+            <li>
+              <a href="#stats">Stats</a>
+            </li>
+            <li>
+              <a href="#relax">Relax</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
+  <ul class="sidenav" id="mobile-nav">
+    <li>
+      <a href="#home">Home</a>
+    </li>
+    <li>
+      <a href="#search">Search</a>
+    </li>
+    <li>
+      <a href="#stats">Stats</a>
+    </li>
+    <li>
+      <a href="#relax">Relax</a>
+    </li>
+  </ul>
+
+
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="./assets/javascript/script.js"></script>
+  
+  <script>
+    var sideNav = document.querySelector('.sidenav');
+    // Side nav needs to be capitalized for some reason..
+    M.Sidenav.init(sideNav, {})
+    </script>
+
+<script src="./assets/javascript/script.js"></script>
 </body>
 
 </html>
