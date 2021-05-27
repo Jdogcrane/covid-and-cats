@@ -12,8 +12,8 @@ var gifUrl = `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${gifKey}`
 // var stateActiveEl = document.querySelector('#stateActive');
 // var stateRecoveredEl = document.querySelector('#stateRecovered');
 // var stateDeathEl = document.querySelector('#stateDeath');
-// var searchBtnEl = document.querySelector('#searchBtn');
-// var input = document.querySelector('#stateInput');
+var searchBtnEl = document.querySelector('#searchBtn');
+var input = document.querySelector('.stateInput');
 
 var sideNav = document.querySelector('.sidenav');
 // Side nav needs to be capitalized for some reason..
@@ -21,27 +21,84 @@ M.Sidenav.init(sideNav, {})
 
 var slider = document.querySelector('.slider')
 M.Slider.init(slider, {
-indicators: false,
-height: 600,
-width: 200,
-transition: 500,
-interval: 6000
+    indicators: false,
+    height: 600,
+    width: 200,
+    transition: 500,
+    interval: 6000
 
 });
 
-// var searchBtnHandler = function (event) {
-//     event.preventDefault();
-    
-//     var state = input.value.trim();
-    
-//     if (state) {
-//         getState(state);
-//         input.value = '';
-//     } else {
-//         return;
-//     }
-    
-// };
+// auto complete with states
+var ac = document.querySelector('.autocomplete');
+M.Autocomplete.init(ac, {
+    data: {
+        "Alabama": null,
+        "Alaska": null,
+        "Arizona": null,
+        "Arkansas": null,
+        "California": null,
+        "Colorado": null,
+        "Connecticut": null,
+        "Delaware": null,
+        "Florida": null,
+        "Georgia": null,
+        "Hawaii": null,
+        "Idaho": null,
+        "Illinois": null,
+        "Indiana": null,
+        "Iowa": null,
+        "Kansas": null,
+        "Kentucky": null,
+        "Louisiana": null,
+        "Maine": null,
+        "Maryland": null,
+        "Massachusetts": null,
+        "Michigan": null,
+        "Minnesota": null,
+        "Mississippi": null,
+        "Missouri": null,
+        "Montana": null,
+        "Nebraska": null,
+        "Nevada": null,
+        "New Hampshire": null,
+        "New Jersey": null,
+        "New Mexico": null,
+        "New York": null,
+        "North Carolina": null,
+        "North Dakota": null,
+        "Ohio": null,
+        "Oklahoma": null,
+        "Oregon": null,
+        "Pennsylvania": null,
+        "Rhode Island": null,
+        "South Carolina": null,
+        "South Dakota": null,
+        "Tennessee": null,
+        "Texas": null,
+        "Utah": null,
+        "Vermont": null,
+        "Virginia": null,
+        "Washington": null,
+        "West Virginia": null,
+        "Wisconsin": null,
+        "Wyoming": null,
+    }
+});
+
+var searchBtnHandler = function (event) {
+    event.preventDefault();
+
+    var state = input.value.trim();
+
+    if (state) {
+        // getState(state);
+        input.value = '';
+    } else {
+        return;
+    }
+
+};
 
 // var getState = (function (state) {
 //     var stateUrl = `https://disease.sh/v3/covid-19/states/${state}`;
@@ -53,12 +110,12 @@ interval: 6000
 //             console.log(stateData);
 //             displayState(stateData);
 //         })
-        
-        
+
+
 //     })
-    
+
 // var displayState = (function (data) {
-    
+
 //     var stateTitle = data.state;
 //     var stateTotal = data.cases;
 //     var stateActive = data.active;
@@ -109,4 +166,4 @@ fetch(gifUrl)
 //     var catsGif = cats.data[0].url;
 //     console.log(catsGif);
 // }
-// searchBtn.addEventListener('click', searchBtnHandler);
+searchBtn.addEventListener('click', searchBtnHandler);
