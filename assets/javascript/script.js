@@ -2,16 +2,15 @@ var gifKey = "KISAUxVEoSojC461QWS5Qdgd1ZGxaUE5";
 var usaUrl = "https://disease.sh/v3/covid-19/countries/usa";
 var gifUrl = `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${gifKey}`
 
-// var usaTitleEl = document.querySelector('#usaTitle');
-// var usaTotalEl = document.querySelector('#usaTotal');
-// var usaActiveEl = document.querySelector('#usaActive');
-// var usaRecoveredEl = document.querySelector('#usaRecovered');
-// var usaDeathEl = document.querySelector('#usaDeath');
-// var stateTitleEl = document.querySelector('#stateTitle');
-// var stateTotalEl = document.querySelector('#stateTotal');
-// var stateActiveEl = document.querySelector('#stateActive');
-// var stateRecoveredEl = document.querySelector('#stateRecovered');
-// var stateDeathEl = document.querySelector('#stateDeath');
+var usaTotalEl = document.querySelector('.usaTotal');
+var usaActiveEl = document.querySelector('.usaActive');
+var usaRecoveredEl = document.querySelector('.usaRecovered');
+var usaDeathsEl = document.querySelector('.usaDeaths');
+var stateTitleEl = document.querySelector('.stateTitle');
+var stateTotalEl = document.querySelector('.stateTotal');
+var stateActiveEl = document.querySelector('.stateActive');
+var stateRecoveredEl = document.querySelector('.stateRecovered');
+var stateDeathsEl = document.querySelector('.stateDeaths');
 var searchBtnEl = document.querySelector('#searchBtn');
 var input = document.querySelector('.stateInput');
 
@@ -86,13 +85,17 @@ M.Autocomplete.init(ac, {
     }
 });
 
+// script to zoom in on selected gifs
+var gallery = document.querySelectorAll('.materialboxed')
+M.Materialbox.init(gallery, {});
+
 var searchBtnHandler = function (event) {
     event.preventDefault();
 
     var state = input.value.trim();
 
     if (state) {
-        // getState(state);
+        getState(state);
         input.value = '';
     } else {
         return;
@@ -100,56 +103,54 @@ var searchBtnHandler = function (event) {
 
 };
 
-// var getState = (function (state) {
-//     var stateUrl = `https://disease.sh/v3/covid-19/states/${state}`;
+var getState = (function (state) {
+    var stateUrl = `https://disease.sh/v3/covid-19/states/${state}`;
 
-//     fetch(stateUrl)
-//         .then(function (response) {
-//             return response.json();
-//         }).then(function (stateData) {
-//             console.log(stateData);
-//             displayState(stateData);
-//         })
+    fetch(stateUrl)
+        .then(function (response) {
+            return response.json();
+        }).then(function (stateData) {
+            console.log(stateData);
+            displayState(stateData);
+        })
 
 
-//     })
+    })
 
-// var displayState = (function (data) {
+var displayState = (function (data) {
 
-//     var stateTitle = data.state;
-//     var stateTotal = data.cases;
-//     var stateActive = data.active;
-//     var stateRecovered = data.recovered;
-//     var stateDeath = data.deaths;
+    var stateTitle = data.state;
+    var stateTotal = data.cases;
+    var stateActive = data.active;
+    var stateRecovered = data.recovered;
+    var stateDeaths = data.deaths;
 
-//     stateTitleEl.textContent = "State: " + stateTitle;
-//     stateTotalEl.textContent = "Total Cases: " + stateTotal;
-//     stateActiveEl.textContent = "Active Cases: " + stateActive;
-//     stateRecoveredEl.textContent = "Recovered: " +stateRecovered;
-//     stateDeathEl.textContent = "Deaths: " + stateDeath;
-// })    
+    stateTitleEl.textContent = stateTitle + " Data";
+    stateTotalEl.textContent = "Total Cases: " + stateTotal;
+    stateActiveEl.textContent = "Active Cases: " + stateActive;
+    stateRecoveredEl.textContent = "Recovered: " +stateRecovered;
+    stateDeathsEl.textContent = "Deaths: " + stateDeaths;
+})    
 
-// var displayUSA = (function (country) {
+var displayUSA = (function (country) {
 
-//     var usaTitle = country.country;
-//     var usaTotal = country.cases;
-//     var usaActive = country.active;
-//     var usaRecovered = country.recovered;
-//     var usaDeath = country.deaths;
+    var usaTotal = country.cases;
+    var usaActive = country.active;
+    var usaRecovered = country.recovered;
+    var usaDeaths = country.deaths;
 
-//     usaTitleEl.textContent = "State: " + usaTitle;
-//     usaTotalEl.textContent = "Total Cases: " + usaTotal;
-//     usaActiveEl.textContent = "Active Cases: " + usaActive;
-//     usaRecoveredEl.textContent = "Recovered: " +usaRecovered;
-//     usaDeathEl.textContent = "Deaths: " + usaDeath;
-// })
+    usaTotalEl.textContent = "Total Cases: " + usaTotal;
+    usaActiveEl.textContent = "Active Cases: " + usaActive;
+    usaRecoveredEl.textContent = "Recovered: " +usaRecovered;
+    usaDeathsEl.textContent = "Deaths: " + usaDeaths;
+})
 
 fetch(usaUrl)
     .then(function (response) {
         return response.json();
     }).then(function (usaData) {
         console.log(usaData);
-        // displayUSA(usaData);
+        displayUSA(usaData);
     })
 
 
