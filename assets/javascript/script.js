@@ -98,8 +98,13 @@ M.Autocomplete.init(ac, {
         "West Virginia": null,
         "Wisconsin": null,
         "Wyoming": null,
-    }
+    },
+
+    limit: 5
 });
+
+// We need an if statement for if the user puts in invalid state, then the results will show nothing... Currently its showing undefined
+
 
 // script to zoom in on selected gifs
 var gallery = document.querySelectorAll('.materialboxed')

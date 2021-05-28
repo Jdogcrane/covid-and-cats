@@ -1,22 +1,23 @@
 * {
     scroll-behavior: smooth;
-    transition: 300ms;
+    transform: none;
 }
 
+/* only using important here to bypass framework styling*/
 .section-search input {
 color: black !important;
-text-align: center !important;
 width: 50% !important;
 border-radius: 20px !important;
+}
+
+.transition {
+transition: 300ms;
 }
 
 .button {
 width: 80px;
 height: auto;
 padding: 13px;
-}
-.button:focus {
-background-color: white;
 }
 
 .card-panel {
@@ -25,12 +26,12 @@ width: 400px;
 }
 
 .row {
-    width: 1000px;
+    width: 900px;
     align-items: center;
 }
 
 h3, h5 {
-color: red;
+color: rgb(255, 47, 47);
 text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -39,6 +40,23 @@ box-shadow: rgba(36, 36, 36, 0.514) 10px 10px 10px 10px;
 border-radius: 20px;
 }
 
+.card-panel:hover {
+background-color: rgb(48, 48, 48);
+transition: 300ms;
+}
+
 .btn {
     border-radius: 20px;
+}
+
+a {
+    border-radius: 20px;
+}
+
+/* only using important here to bypass framework styling */
+a:hover {
+border: 1px solid rgb(73, 73, 73) !important;
+background-color: rgb(26, 26, 26) !important;
+border-radius: 20px;
+margin: 10px;
 }
