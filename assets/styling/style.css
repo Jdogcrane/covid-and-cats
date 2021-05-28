@@ -1,12 +1,13 @@
 * {
     scroll-behavior: smooth;
+    transition: 300ms;
 }
-
 
 .section-search input {
 color: black !important;
 text-align: center !important;
 width: 50% !important;
+border-radius: 20px !important;
 }
 
 .button {
@@ -31,4 +32,13 @@ width: 400px;
 h3, h5 {
 color: red;
 text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.card-panel {
+box-shadow: rgba(36, 36, 36, 0.514) 10px 10px 10px 10px;
+border-radius: 20px;
+}
+
+.btn {
+    border-radius: 20px;
 }
