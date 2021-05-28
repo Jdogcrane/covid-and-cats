@@ -13,11 +13,22 @@ var stateRecoveredEl = document.querySelector('.stateRecovered');
 var stateDeathsEl = document.querySelector('.stateDeaths');
 var searchBtnEl = document.querySelector('#searchBtn');
 var input = document.querySelector('.stateInput');
+var gif1El = document.querySelector('#gif1');
+var gif2El = document.querySelector('#gif2');
+var gif3El = document.querySelector('#gif3');
+var gif4El = document.querySelector('#gif4');
+var gif5El = document.querySelector('#gif5');
+var gif6El = document.querySelector('#gif6');
+var gif7El = document.querySelector('#gif7');
+var gif8El = document.querySelector('#gif8');
+var catBtn = document.querySelector('#catBtn');
+var catContainer = document.querySelector('#catContainer');
 
 var sideNav = document.querySelector('.sidenav');
 // Side nav needs to be capitalized for some reason..
 M.Sidenav.init(sideNav, {})
 
+// slider script for materialize
 var slider = document.querySelector('.slider')
 M.Slider.init(slider, {
     indicators: false,
@@ -110,7 +121,6 @@ var getState = (function (state) {
         .then(function (response) {
             return response.json();
         }).then(function (stateData) {
-            console.log(stateData);
             displayState(stateData);
         })
 
@@ -149,22 +159,35 @@ fetch(usaUrl)
     .then(function (response) {
         return response.json();
     }).then(function (usaData) {
-        console.log(usaData);
         displayUSA(usaData);
     })
 
 
-fetch(gifUrl)
-    .then(function (response) {
-        return response.json();
-    }).then(function (gifData) {
-        // displayCats(gifData);
-    })
+var getCats = function() {
+    
+    fetch(gifUrl)
+        .then(function (response) {
+            return response.json();
+        }).then(function (gifData) {
+            displayCats(gifData);
+        })
+}
 
-// var displayCats = function(cats) {
-//     console.log(cats);
 
-//     var catsGif = cats.data[0].url;
-//     console.log(catsGif);
-// }
+
+var displayCats = function(cats) {
+    catContainer.setAttribute("style", "");
+
+    gif1El.setAttribute("src", cats.data[0].images.downsized.url);
+    gif2El.setAttribute("src", cats.data[11].images.downsized.url);
+    gif3El.setAttribute("src", cats.data[29].images.downsized.url);
+    gif4El.setAttribute("src", cats.data[8].images.downsized.url);
+    gif5El.setAttribute("src", cats.data[3].images.downsized.url);
+    gif6El.setAttribute("src", cats.data[15].images.downsized.url);
+    gif7El.setAttribute("src", cats.data[23].images.downsized.url);
+    gif8El.setAttribute("src", cats.data[25].images.downsized.url);
+
+}
+
 searchBtn.addEventListener('click', searchBtnHandler);
+catBtn.addEventListener('click', getCats);
