@@ -1,3 +1,8 @@
+* {
+    scroll-behavior: smooth;
+}
+
+
 .section-search input {
 color: black !important;
 text-align: center !important;
@@ -20,9 +25,10 @@ width: 400px;
 
 .row {
     width: 1000px;
+    align-items: center;
 }
 
-#gallery {
-
-    background-color:  rgb(255, 115, 0);
+h3, h5 {
+color: red;
+text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
