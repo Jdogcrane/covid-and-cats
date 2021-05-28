@@ -94,15 +94,16 @@
   <!--Search-->
   <section id="search" class="section section-search black darken-1 white-text center scrollspy">
     <div class="container">
-      <div class="row">
+      <div class="row"></div>
         <div class="col s12">
           <h3>Search State Covid Data</h3>
           <div class="input-field">
             <input type="text" class="stateInput white black-text autocomplete" id="autocomplete-input"
-              placeholder="North Carolina, Virginia ect...">
-            <button id="searchBtn" class="btn waves-effect waves-bright pulse red" type="submit" name="action">Submit
+            placeholder="North Carolina, Virginia ect...">
+            <button id="searchBtn" class="btn waves-effect waves-bright pulse red" type="submit" name="action">Search
               <i class="material-icons right">send</i>
             </button>
+            <p class="flow-text" id="searchHistory">Recently Searched:</p>
           </div>
         </div>
       </div>
@@ -110,7 +111,7 @@
   </section>
 
   <!-- Data Cards -->
-  <section id="stats" class="section section-icons grey lighten-4 center center-align">
+  <section id="stats" class="section section-icons black center center-align">
     <div class="container center">
       <div class="row">
         <div class="col s12 m6">
@@ -138,25 +139,21 @@
   </section>
 
   <!-- relax section -->
-  <section id="relax" class=" nav-wrapper section section-follow orange darken-2 white-text center">
-    <div class="container center">
+  <section id="relax" class="section section-follow orange darken-2 white-text center flow-text">
+    <div class="container">
       <div class="row">
-        <div class="col s12 ">
+        <div">
           <h4>Relax Zone</h4>
           <p>After looking at all that stressful data come down here to relax...</p>
-          <button id="catBtn" class="btn waves-effect teal center" type="submit" name="action">Click for adorable cats
-            <i class="material-icons right">favorite_border</i>
+          <button id="catBtn" class="btn waves-effect teal pulse" type="submit" name="action">Click for adorable cats
           </button>
         </div>
       </div>
     </div>
   </section>
   <!-- cat gifs fetched from giphy api go here -->
-  <section id="gallery" class="section section-gallery scrollspy">
+  <section id="gallery" class="section section-gallery scrollspy orange darken-2">
     <div class="container center" id="catContainer" style="display: none;">
-      <h4 class="center">
-        <span class="purple-text">Cat</span> Gifs
-      </h4>
       <div class="row">
         <div class="col s12 m3">
           <img src="" id="gif1" alt="placeholder" class="materialboxed responsive-img">
@@ -185,15 +182,18 @@
       </div>
     </div>
   </section>
-
-  <div class="center backround-color teal">
-    <img src="./assets/images/banner2.gif" alt="placeholder">
-
-  </div>
+  <!-- placeholder until cat gifs are fetched -->
+    <div class="center backround-color teal" id="placeholderImg">
+      <img src="./assets/images/banner2.gif" alt="placeholder">
+    </div>
+<!-- footer -->
+<footer class="section teal darken-2 white-text center">
+<p class="flow-text">Covid & Cats &copy; 2021</p>
+<a class="link" href="https://github.com/Jdogcrane/covid-and-cats">GitHub</a>
+</footer>
 
   <!--JavaScript at end of body for optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./assets/javascript/script.js"></script>
 </body>
-
 </html>
