@@ -23,6 +23,8 @@ var gif7El = document.querySelector('#gif7');
 var gif8El = document.querySelector('#gif8');
 var catBtn = document.querySelector('#catBtn');
 var catContainer = document.querySelector('#catContainer');
+var placeholderImg = document.querySelector('#placeholderImg');
+var searchHistoryEl = document.querySelector('#searchHistory');
 
 var sideNav = document.querySelector('.sidenav');
 // Side nav needs to be capitalized for some reason..
@@ -100,6 +102,12 @@ M.Autocomplete.init(ac, {
 var gallery = document.querySelectorAll('.materialboxed')
 M.Materialbox.init(gallery, {});
 
+var init = function() {
+    renderHistory();
+}
+
+var searchHistory = JSON.parse(localStorage.getItem("history")) || [];
+
 var searchBtnHandler = function (event) {
     event.preventDefault();
 
@@ -112,7 +120,18 @@ var searchBtnHandler = function (event) {
         return;
     }
 
+    searchHistory = [];
+    var historyText = state;
+    searchHistory = searchHistory.concat([historyText]);
+    
+    localStorage.setItem("history", JSON.stringify(searchHistory));
 };
+
+var renderHistory = function() {
+    var historyTextarea = document.createElement('ul');
+    historyTextarea.textContent = searchHistory;
+    searchHistoryEl.appendChild(historyTextarea);
+}
 
 var getState = (function (state) {
     var stateUrl = `https://disease.sh/v3/covid-19/states/${state}`;
@@ -176,18 +195,21 @@ var getCats = function() {
 
 
 var displayCats = function(cats) {
+    console.log(cats);
+    placeholderImg.setAttribute("style", "display: none");
     catContainer.setAttribute("style", "");
 
-    gif1El.setAttribute("src", cats.data[0].images.downsized.url);
-    gif2El.setAttribute("src", cats.data[11].images.downsized.url);
-    gif3El.setAttribute("src", cats.data[29].images.downsized.url);
-    gif4El.setAttribute("src", cats.data[8].images.downsized.url);
-    gif5El.setAttribute("src", cats.data[3].images.downsized.url);
-    gif6El.setAttribute("src", cats.data[15].images.downsized.url);
-    gif7El.setAttribute("src", cats.data[23].images.downsized.url);
-    gif8El.setAttribute("src", cats.data[25].images.downsized.url);
+    gif1El.setAttribute("src", cats.data[0].images.original.url);
+    gif2El.setAttribute("src", cats.data[11].images.original.url);
+    gif3El.setAttribute("src", cats.data[1].images.original.url);
+    gif4El.setAttribute("src", cats.data[25].images.original.url);
+    gif5El.setAttribute("src", cats.data[3].images.original.url);
+    gif6El.setAttribute("src", cats.data[15].images.original.url);
+    gif7El.setAttribute("src", cats.data[23].images.original.url);
+    gif8El.setAttribute("src", cats.data[13].images.original.url);
 
 }
 
 searchBtn.addEventListener('click', searchBtnHandler);
 catBtn.addEventListener('click', getCats);
+init();
