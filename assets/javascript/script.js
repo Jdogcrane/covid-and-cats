@@ -98,7 +98,9 @@ M.Autocomplete.init(ac, {
         "West Virginia": null,
         "Wisconsin": null,
         "Wyoming": null,
-    }
+    },
+limit: 5
+
 });
 
 // script to zoom in on selected gifs

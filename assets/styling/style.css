@@ -1,6 +1,5 @@
 * {
     scroll-behavior: smooth;
-    transition: 300ms;
 }
 
 .section-search input {
@@ -35,10 +34,46 @@ text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .card-panel {
-box-shadow: rgba(36, 36, 36, 0.514) 10px 10px 10px 10px;
 border-radius: 20px;
+border: white double 2px;
+font-weight: bold;
+transition: 300ms;
 }
 
 .btn {
     border-radius: 20px;
+}
+
+a:hover {
+    background:white !important;
+    color: black !important;
+    text-shadow: black 10px 10px 20px;
+    font-weight: bolder;
+    transition: 300ms;
+    transform: scale(1.1);
+    border-radius: 30px;
+}
+
+.card-panel:hover {
+    background:white !important;
+    color: black !important;
+    text-shadow: black 10px 10px 20px;
+    font-weight: bolder;
+    transition: 300ms;
+    transform: scale(1.1);
+    border-radius: 50px;
+}
+
+a {
+    border-radius: 20px;
+}
+
+button:hover {
+    background:white !important;
+    color: black !important;
+    text-shadow: black 10px 10px 20px;
+    font-weight: bolder;
+    transition: 300ms;
+    transform: scale(1.1);
+    border-radius: 30px;
 }
