@@ -1,51 +1,21 @@
 * {
     scroll-behavior: smooth;
+    transition: 300ms;
 }
+
+/* only used important to bypass Framework styling */
 
 .section-search input {
-color: black !important;
-text-align: center !important;
-width: 50% !important;
-border-radius: 20px !important;
+    color: black !important;
+    text-align: center !important;
+    width: 50% !important;
+    border-radius: 20px !important;
 }
 
-.button {
-width: 80px;
-height: auto;
-padding: 13px;
-}
-.button:focus {
-background-color: white;
-}
-
-.card-panel {
-box-sizing: border-box;
-width: 400px;
-}
-
-.row {
-    width: 900px;
-    align-items: center;
-}
-
-h3, h5 {
-color: red;
-text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.card-panel {
-border-radius: 20px;
-border: white double 2px;
-font-weight: bold;
-transition: 300ms;
-}
-
-.btn {
-    border-radius: 20px;
-}
+/* only used important to bypass Framework styling */
 
 a:hover {
-    background:white !important;
+    background: white !important;
     color: black !important;
     text-shadow: black 10px 10px 20px;
     font-weight: bolder;
@@ -54,8 +24,10 @@ a:hover {
     border-radius: 30px;
 }
 
+/* only used important to bypass Framework styling */
+
 .card-panel:hover {
-    background:white !important;
+    background: white !important;
     color: black !important;
     text-shadow: black 10px 10px 20px;
     font-weight: bolder;
@@ -68,12 +40,56 @@ a {
     border-radius: 20px;
 }
 
+/* only used important to bypass Framework styling */
+
 button:hover {
-    background:white !important;
+    background: white !important;
     color: black !important;
     text-shadow: black 10px 10px 20px;
     font-weight: bolder;
     transition: 300ms;
     transform: scale(1.1);
     border-radius: 30px;
+}
+
+/* only used important to bypass Framework styling/fix bug */
+
+.autocomplete-content {
+    transition: none !important;
+}
+
+.button {
+    width: 80px;
+    height: auto;
+    padding: 13px;
+}
+
+.button:focus {
+    background-color: white;
+}
+
+.card-panel {
+    box-sizing: border-box;
+    width: 400px;
+}
+
+.row {
+    width: 900px;
+    align-items: center;
+}
+
+h3, h5 {
+    color: red;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.card-panel {
+    border-radius: 20px;
+    border: white double 2px;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+.btn {
+    border-radius: 20px;
 }
