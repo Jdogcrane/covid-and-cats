@@ -1,7 +1,9 @@
+// API urls & keys
 var gifKey = "KISAUxVEoSojC461QWS5Qdgd1ZGxaUE5";
 var usaUrl = "https://disease.sh/v3/covid-19/countries/usa";
 var gifUrl = `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${gifKey}`
 
+// Global Variables
 var usaTotalEl = document.querySelector('.usaTotal');
 var usaActiveEl = document.querySelector('.usaActive');
 var usaRecoveredEl = document.querySelector('.usaRecovered');
@@ -26,6 +28,7 @@ var catContainer = document.querySelector('#catContainer');
 var placeholderImg = document.querySelector('#placeholderImg');
 var searchHistoryEl = document.querySelector('#searchHistory');
 
+// HTML Script effects
 var sideNav = document.querySelector('.sidenav');
 // Side nav needs to be capitalized for some reason..
 M.Sidenav.init(sideNav, {})
@@ -102,12 +105,14 @@ M.Autocomplete.init(ac, {
 var gallery = document.querySelectorAll('.materialboxed')
 M.Materialbox.init(gallery, {});
 
+// Starting function to check for history in local storage
 var init = function() {
     renderHistory();
 }
 
 var searchHistory = JSON.parse(localStorage.getItem("history")) || [];
 
+// function connected to event listener that takes the searched item and puts that data into the api
 var searchBtnHandler = function (event) {
     event.preventDefault();
 
@@ -120,19 +125,21 @@ var searchBtnHandler = function (event) {
         return;
     }
 
+    // logs what was searched and stores it in local storage
     searchHistory = [];
     var historyText = state;
     searchHistory = searchHistory.concat([historyText]);
     
     localStorage.setItem("history", JSON.stringify(searchHistory));
+    renderHistory();
 };
 
+// renders the history on to the page
 var renderHistory = function() {
-    var historyTextarea = document.createElement('ul');
-    historyTextarea.textContent = searchHistory;
-    searchHistoryEl.appendChild(historyTextarea);
+    searchHistoryEl.textContent = "Recently Searched: " + searchHistory;
 }
 
+// updates the api and pushes the new api data to be displayed
 var getState = (function (state) {
     var stateUrl = `https://disease.sh/v3/covid-19/states/${state}`;
 
@@ -146,6 +153,7 @@ var getState = (function (state) {
 
     })
 
+    // displays the searched for data onto the page
 var displayState = (function (data) {
 
     var stateTitle = data.state;
@@ -161,6 +169,7 @@ var displayState = (function (data) {
     stateDeathsEl.textContent = "Deaths: " + stateDeaths;
 })    
 
+// displays the total USA api results onto the page
 var displayUSA = (function (country) {
 
     var usaTotal = country.cases;
@@ -174,6 +183,7 @@ var displayUSA = (function (country) {
     usaDeathsEl.textContent = "Deaths: " + usaDeaths;
 })
 
+// pulls the total USA api results from the api
 fetch(usaUrl)
     .then(function (response) {
         return response.json();
@@ -182,6 +192,7 @@ fetch(usaUrl)
     })
 
 
+    // calls the cats gifs from giphy api
 var getCats = function() {
     
     fetch(gifUrl)
@@ -193,7 +204,7 @@ var getCats = function() {
 }
 
 
-
+// displays the cat gifs from giphy onto the page, while making the container appear, and the placholder gif disappear.
 var displayCats = function(cats) {
     console.log(cats);
     placeholderImg.setAttribute("style", "display: none");
@@ -210,6 +221,7 @@ var displayCats = function(cats) {
 
 }
 
+// event listeners and function call
 searchBtn.addEventListener('click', searchBtnHandler);
 catBtn.addEventListener('click', getCats);
 init();
