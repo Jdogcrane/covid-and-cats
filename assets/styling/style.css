@@ -68,10 +68,6 @@ button:hover {
     background-color: white;
 }
 
-.card-panel {
-    box-sizing: border-box;
-    width: 400px;
-}
 
 .row {
     width: 900px;
@@ -88,6 +84,8 @@ h3, h5 {
     border: white double 2px;
     font-weight: bold;
     transition: 300ms;
+    box-sizing: border-box;
+    width: 400px;
 }
 
 .btn {
