@@ -99,7 +99,7 @@ M.Autocomplete.init(ac, {
         "Wisconsin": null,
         "Wyoming": null,
     },
-limit: 5
+    limit: 5
 
 });
 
@@ -108,7 +108,7 @@ var gallery = document.querySelectorAll('.materialboxed')
 M.Materialbox.init(gallery, {});
 
 // Starting function to check for history in local storage
-var init = function() {
+var init = function () {
     renderHistory();
 }
 
@@ -131,13 +131,13 @@ var searchBtnHandler = function (event) {
     searchHistory = [];
     var historyText = state;
     searchHistory = searchHistory.concat([historyText]);
-    
+
     localStorage.setItem("history", JSON.stringify(searchHistory));
     renderHistory();
 };
 
 // renders the history on to the page
-var renderHistory = function() {
+var renderHistory = function () {
     searchHistoryEl.textContent = "Recently Searched: " + searchHistory;
 }
 
@@ -147,15 +147,21 @@ var getState = (function (state) {
 
     fetch(stateUrl)
         .then(function (response) {
+            // This code prevents the data field from being updated with undefined
+            var myStatus = response.status;
+            if (myStatus === 404) {
+                return init();
+            }
             return response.json();
         }).then(function (stateData) {
+
             displayState(stateData);
         })
 
 
-    })
+})
 
-    // displays the searched for data onto the page
+// displays the searched for data onto the page
 var displayState = (function (data) {
 
     var stateTitle = data.state;
@@ -167,9 +173,9 @@ var displayState = (function (data) {
     stateTitleEl.textContent = stateTitle + " Data";
     stateTotalEl.textContent = "Total Cases: " + stateTotal;
     stateActiveEl.textContent = "Active Cases: " + stateActive;
-    stateRecoveredEl.textContent = "Recovered: " +stateRecovered;
+    stateRecoveredEl.textContent = "Recovered: " + stateRecovered;
     stateDeathsEl.textContent = "Deaths: " + stateDeaths;
-})    
+})
 
 // displays the total USA api results onto the page
 var displayUSA = (function (country) {
@@ -181,7 +187,7 @@ var displayUSA = (function (country) {
 
     usaTotalEl.textContent = "Total Cases: " + usaTotal;
     usaActiveEl.textContent = "Active Cases: " + usaActive;
-    usaRecoveredEl.textContent = "Recovered: " +usaRecovered;
+    usaRecoveredEl.textContent = "Recovered: " + usaRecovered;
     usaDeathsEl.textContent = "Deaths: " + usaDeaths;
 })
 
@@ -194,9 +200,9 @@ fetch(usaUrl)
     })
 
 
-    // calls the cats gifs from giphy api
-var getCats = function() {
-    
+// calls the cats gifs from giphy api
+var getCats = function () {
+
     fetch(gifUrl)
         .then(function (response) {
             return response.json();
@@ -207,7 +213,7 @@ var getCats = function() {
 
 
 // displays the cat gifs from giphy onto the page, while making the container appear, and the placholder gif disappear.
-var displayCats = function(cats) {
+var displayCats = function (cats) {
     console.log(cats);
     placeholderImg.setAttribute("style", "display: none");
     catContainer.setAttribute("style", "");
