@@ -214,7 +214,6 @@ var getCats = function () {
 
 // displays the cat gifs from giphy onto the page, while making the container appear, and the placholder gif disappear.
 var displayCats = function (cats) {
-    console.log(cats);
     placeholderImg.setAttribute("style", "display: none");
     catContainer.setAttribute("style", "");
 
