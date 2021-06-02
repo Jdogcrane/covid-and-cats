@@ -3,6 +3,8 @@
     transition: 300ms;
 }
 
+
+
 /* only used important to bypass Framework styling */
 
 .section-search input {
@@ -21,23 +23,11 @@ a:hover {
     font-weight: bolder;
     transition: 300ms;
     transform: scale(1.1);
-    border-radius: 30px;
 }
-
-/* only used important to bypass Framework styling */
-
-.card-panel:hover {
-    background: white !important;
-    color: black !important;
-    text-shadow: black 10px 10px 20px;
-    font-weight: bolder;
-    transition: 300ms;
-    transform: scale(1.1);
-    border-radius: 50px;
-}
-
-a {
-    border-radius: 20px;
+/* increased nav bar after received feedback */
+ul li a {
+    border-radius: 5px;
+    font-size: larger
 }
 
 /* only used important to bypass Framework styling */
