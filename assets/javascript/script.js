@@ -139,6 +139,10 @@ var searchBtnHandler = function (event) {
 // renders the history on to the page
 var renderHistory = function () {
     searchHistoryEl.textContent = "Recently Searched: " + searchHistory;
+
+    if (searchHistory !== "") {
+        getState(searchHistory);
+    }
 }
 
 // updates the api and pushes the new api data to be displayed
