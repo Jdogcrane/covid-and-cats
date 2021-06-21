@@ -28,6 +28,12 @@ var catContainer = document.querySelector('#catContainer');
 var placeholderImg = document.querySelector('#placeholderImg');
 var searchHistoryEl = document.querySelector('#searchHistory');
 
+// Carousel Slider
+var carouselSlider = document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems);
+  });
+
 // HTML Script effects
 var sideNav = document.querySelector('.sidenav');
 // Side nav needs to be capitalized for some reason..
